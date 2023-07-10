@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 
 interface AppState {
-  // Define your state properties here
+  pollCount: number
 }
 
 interface AppContextProps {
@@ -14,17 +14,17 @@ interface Props {
 }
 
 const initialState: AppState = {
-  // Set initial state values here
+  pollCount:0
 };
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
-type Action = | { type: 'SET_COUNT'; payload: number };
+type Action = | { type: 'SET_POLL_COUNT'; payload: number };
 
 const appReducer = (state: AppState, action: Action): AppState => {
   switch (action.type) {
-    case 'SET_COUNT':
-      return { ...state, count: action.payload };
+    case 'SET_POLL_COUNT':
+      return { ...state, pollCount: action.payload };
     default:
       return state;
   }

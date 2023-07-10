@@ -27,19 +27,21 @@ const SignUp: React.FC = () => {
     <div className="container mt-4">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group mb-2">
+        <div  className='form-group mb-3 mt-3 border border-secondary rounded'>
+        <div className="form-group m-3">
           <label>Email:</label>
           <input className="form-control input-padding" type="email" value={email} onChange={handleEmailChange} />
         </div>
-        <div className="form-group mb-2">
+        <div className="form-group m-3">
           <label>Password:</label>
           <input className="form-control input-padding" type="password" value={password} onChange={handlePasswordChange} />
         </div>
-        <div className="form-group mb-3">
+        <div className="form-group m-3">
           <label>Confirm Password:</label>
-          <input className="form-control input-padding" type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+          <input className="form-control" type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
         </div>
-        <button className="btn btn-primary" type="submit">Sign Up</button>
+        <button className="btn btn-primary m-3" type="submit">Sign Up</button>
+        </div>
       </form>
     </div>
   );

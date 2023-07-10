@@ -6,6 +6,7 @@ import CurrentPolls from "./components/CurrentPolls";
 import CreatePoll from "./components/CreatePoll";
 import AboutUs from "./components/AboutUs";
 import SignUp from "./components/SignUp";
+import MyPollPage from "./components/MyPollPage";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,28 @@ const App: React.FC = () => {
       <Route path="/create-poll" element={<CreatePoll />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/mypoll" element={<MyPollPage candidates={[
+          {
+            id: '1',
+            photo: 'candidate1.jpg',
+            name: 'Candidate 1',
+            votes: 10
+          },
+          {
+            id: '2',
+            photo: 'candidate2.jpg',
+            name: 'Candidate 2',
+            votes: 5
+          },
+          {
+            id: '3',
+            photo: 'candidate3.jpg',
+            name: 'Candidate 3',
+            votes: 2
+          }
+        ]} onVote={function (candidateId: string): void {
+          throw new Error("Function not implemented.");
+        } } />} />
       </Routes>
     </Router>
   );
