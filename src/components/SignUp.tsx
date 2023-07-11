@@ -25,9 +25,11 @@ const SignUp: React.FC = () => {
 
   return (
     <div className="container mt-4">
+      <div className="border-bottom border-4 border-primary">
       <h2>Sign Up</h2>
+      </div>
       <form onSubmit={handleSubmit}>
-        <div  className='form-group mb-3 mt-3 border border-secondary rounded'>
+        <div  className='form-group mt-3 mb-3 border-bottom border-primary rounded'>
         <div className="form-group m-3">
           <label>Email:</label>
           <input className="form-control input-padding" type="email" value={email} onChange={handleEmailChange} />
