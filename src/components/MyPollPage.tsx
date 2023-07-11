@@ -1,5 +1,6 @@
 import React from "react";
-import {Candidate} from '../Types/types'
+import { Candidate } from "../Types/types";
+import PageHeader from "./PageHeader";
 
 interface MyPollPageProps {
   candidates: Candidate[];
@@ -9,19 +10,19 @@ interface MyPollPageProps {
 const MyPollPage: React.FC<MyPollPageProps> = ({ candidates, onVote }) => {
   return (
     <div className="container mt-4">
-      <h2>My Poll</h2>
-      <div className="col  border border-secondary rounded">
+      <PageHeader header='My Poll' />
+      <div className="col border border-secondary rounded mt-3">
         <div className="row m-3">
           {candidates.map((candidate) => (
             <div key={candidate.id} className="col-md-4 my-4">
-              <div className="card">
+              <div className="card text-dark bg-light mb-3">
+              <div className="card-header">{candidate.name}</div>
                 <img
                   src={candidate.photo}
                   alt={candidate.name}
-                  className="card-img-top"
+                  className="card-img-top img-thumbnail"
                 />
                 <div className="card-body">
-                  <h3 className="card-title">{candidate.name}</h3>
                   <button
                     className="btn btn-primary"
                     onClick={() => onVote(candidate.id)}

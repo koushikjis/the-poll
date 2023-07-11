@@ -7,6 +7,7 @@ const CreatePoll: React.FC = () => {
   const [candidates, setCandidates] = useState<
     Array<{ photo: File | null; name: string }>
   >([]);
+  const [pollTitle, setPollTitle] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [fieldRendered, setFieldRendered] = useState(false);
 
@@ -14,11 +15,9 @@ const CreatePoll: React.FC = () => {
   const [numOfCandidates, setNumOfCandidates] = useState(
     context?.state.pollCount || 0
   );
-  const [inputNumber, setInputNumber] = useState('')
+  const [inputNumber, setInputNumber] = useState("");
 
-  const handleNumOfCandidatesChange = (
-    value: number
-  ) => {
+  const handleNumOfCandidatesChange = (value: number) => {
     setNumOfCandidates(value);
     setCandidates(
       Array.from({ length: value }, () => ({
@@ -74,12 +73,9 @@ const CreatePoll: React.FC = () => {
 
   const renderCandidateFields = () => {
     return _.times(numOfCandidates, (index: number) => (
-      <div
-        key={index}
-        className="mt-3 mb-3 border-bottom border-primary rounded"
-      >
-        <div className="form-group m-2">
-          <h5 className="border-bottom mb-3 mt-4">Candidate {index + 1}:&nbsp;</h5>
+      <div key={index} className="mt-3 mb-3">
+        <div className="form-group m-2 border-bottom border-primary rounded">
+          <h5 className="mb-3 mt-4">Candidate {index + 1}:&nbsp;</h5>
         </div>
         <div className="form-group m-2">
           <label>Candidate Photo:&nbsp;</label>
@@ -105,13 +101,27 @@ const CreatePoll: React.FC = () => {
 
   if (context?.state.pollCount) setTimeout(() => setFieldRendered(true), 1);
 
+  function handlePollTitleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    setPollTitle(e.target.value);
+  }
+
   return (
     <div className="container mt-4">
       <PageHeader header="Create Poll" />
       <form onSubmit={handleSubmit}>
+        <div className="form-group m-2">
+          <label>Poll title:</label>
+          <input
+            className="form-control"
+            name="poll-title"
+            type="text"
+            value={pollTitle}
+            onChange={(e) => handlePollTitleChange(e)}
+          />
+        </div>
         {!fieldRendered && (
           <>
-            <div className="form-group m-3">
+            <div className="form-group m-2">
               <label>How many candidates?</label>
               <input
                 className="form-control"
@@ -119,10 +129,14 @@ const CreatePoll: React.FC = () => {
                 type="number"
                 min="0"
                 value={inputNumber}
-                onChange={(e)=>setInputNumber(e.target.value)}
+                onChange={(e) => setInputNumber(e.target.value)}
               />
             </div>
-            <button className="btn btn-primary m-3" onClick={()=>handleNumOfCandidatesChange(+inputNumber)} type="button">
+            <button
+              className="btn btn-primary m-2"
+              onClick={() => handleNumOfCandidatesChange(+inputNumber)}
+              type="button"
+            >
               Create form
             </button>
           </>
