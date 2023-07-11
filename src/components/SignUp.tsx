@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PageHeader from './PageHeader';
 
 const SignUp: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -25,9 +26,7 @@ const SignUp: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <div className="border-bottom border-4 border-primary">
-      <h2>Sign Up</h2>
-      </div>
+      <PageHeader header='Sign Up' />
       <form onSubmit={handleSubmit}>
         <div  className='form-group mt-3 mb-3 border-bottom border-primary rounded'>
         <div className="form-group m-3">

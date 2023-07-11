@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import _ from "lodash";
 import AppContext from "../context/AppContext";
+import PageHeader from "./PageHeader";
 
 const CreatePoll: React.FC = () => {
   const [candidates, setCandidates] = useState<
@@ -106,9 +107,7 @@ const CreatePoll: React.FC = () => {
 
   return (
     <div className="container mt-4">
-      <div className="border-bottom border-4 border-primary">
-        <h2>Create Poll</h2>
-      </div>
+      <PageHeader header="Create Poll" />
       <form onSubmit={handleSubmit}>
         {!fieldRendered && (
           <>
