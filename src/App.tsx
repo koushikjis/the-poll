@@ -7,6 +7,7 @@ import CreatePoll from "./components/CreatePoll";
 import AboutUs from "./components/AboutUs";
 import SignUp from "./components/SignUp";
 import MyPollPage from "./components/MyPollPage";
+import Login from "./components/Login";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,8 @@ const App: React.FC = () => {
         <Route path="/create-poll" element={<CreatePoll />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/log-in" element={<Login />} />
+        <Route path="/log-out" element={<Login logout={true} />} />
         <Route
           path="/mypoll"
           element={

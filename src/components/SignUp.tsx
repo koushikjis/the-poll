@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from './PageHeader';
 
 const SignUp: React.FC = () => {
@@ -44,6 +45,7 @@ const SignUp: React.FC = () => {
         <button className="btn btn-primary m-3" type="submit">Sign Up</button>
         </div>
       </form>
+      <div>Already a member?&nbsp;&nbsp;<Link to="/log-in">Login</Link></div>
     </div>
   );
 };

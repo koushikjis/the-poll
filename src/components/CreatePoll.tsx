@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import _ from "lodash";
 import AppContext from "../context/AppContext";
 import PageHeader from "./PageHeader";
+import ShowAlert from "../Utils/ShowAlert";
 
 const CreatePoll: React.FC = () => {
   const [candidates, setCandidates] = useState<
@@ -148,20 +149,7 @@ const CreatePoll: React.FC = () => {
           </button>
         )}
       </form>
-      {formSubmitted && (
-        <div
-          className="alert alert-success alert-dismissible fade show mt-3"
-          role="alert"
-        >
-          Form submitted successfully!
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="alert"
-            aria-label="Close"
-          ></button>
-        </div>
-      )}
+      {formSubmitted && <ShowAlert message={"Form submitted successfully!"} />}
     </div>
   );
 };

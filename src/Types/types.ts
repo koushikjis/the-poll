@@ -9,3 +9,15 @@ export interface Candidate {
     candidate: Candidate,
     onVote: (candidateId: string) => void;
   }
+
+  export interface AppState {
+    pollCount: number
+    user: {
+      name:string
+      loginTime:Date|undefined
+    }
+  }
+
+  export interface Logout {
+    logout?: boolean
+  }
