@@ -4,14 +4,11 @@ import AppContext from "../context/AppContext";
 
 const Menu: React.FC = () => {
   const { state } = useContext(AppContext);
-  console.log("state ===> ", state);
 
-  const isLoggedIn = () => {
+  const memoizedIsLoggedIn = useCallback(() => {
     const logStatus = state.user.name !== "" ? true : false;
     return logStatus;
-  };
-
-  const memoizedIsLoggedIn = useCallback(isLoggedIn, [state.user]);
+  }, [state.user]);
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
